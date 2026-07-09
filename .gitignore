@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+build/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local-only app exports or backups
+exports/
+backups/
+*.local.json
+*.private.json
+
+# Future AoE2 Coach personal data exports
+*.games
+*.missions
+*.skills
+*.reviews
+.games
+.missions
+.skills
+.reviews

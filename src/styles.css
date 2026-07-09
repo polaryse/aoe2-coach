@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Segoe UI Variable", "Segoe UI", Inter, system-ui, sans-serif;
+  background: #0a0c10;
+}
+
+input,
+select,
+textarea {
+  color-scheme: dark;
+}
+
+.field {
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid #6b5635;
+  background: rgba(16, 13, 10, 0.7);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #f2dfaf;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.field::placeholder {
+  color: #78716c;
+}
+
+.field:focus {
+  border-color: #e6bd62;
+  box-shadow: 0 0 0 2px rgba(230, 189, 98, 0.2);
+}
+
+.field.search-field {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.label {
+  margin-bottom: 0.25rem;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #d8bd83;
+}
+
+.action {
+  border-radius: 0.25rem;
+  border: 1px solid rgba(230, 189, 98, 0.8);
+  background: linear-gradient(to bottom, #e6bd62, #c59246);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #171008;
+  box-shadow: 0 0 42px rgba(230, 189, 98, 0.18);
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.action:hover {
+  filter: brightness(1.12);
+}
+
+.aoe-backdrop {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(230, 189, 98, 0.22), transparent 28%),
+    radial-gradient(circle at 85% 18%, rgba(126, 34, 48, 0.26), transparent 30%),
+    linear-gradient(135deg, rgba(10, 12, 16, 0.96), rgba(28, 25, 20, 0.94) 48%, rgba(19, 38, 45, 0.9));
+}
+
+.aoe-backdrop::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(242, 223, 175, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 223, 175, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at center, transparent 0, rgba(0, 0, 0, 0.36) 78%);
+  background-size: 54px 54px, 54px 54px, 100% 100%;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.25));
+}
+
+.aoe-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(216, 189, 131, 0.34);
+  background:
+    linear-gradient(180deg, rgba(55, 45, 31, 0.92), rgba(23, 20, 16, 0.94)),
+    repeating-linear-gradient(90deg, rgba(242, 223, 175, 0.04) 0 1px, transparent 1px 18px);
+  box-shadow: inset 0 1px 0 rgba(242, 223, 175, 0.14), 0 20px 48px rgba(0, 0, 0, 0.34);
+}
+
+.aoe-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(0, 0, 0, 0.38);
+  box-shadow: inset 0 0 0 2px rgba(197, 146, 70, 0.08);
+}
+
+.aoe-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.aoe-plaque {
+  background:
+    linear-gradient(180deg, rgba(126, 34, 48, 0.42), rgba(32, 20, 16, 0.52)),
+    linear-gradient(90deg, rgba(230, 189, 98, 0.12), transparent 28%, transparent 72%, rgba(230, 189, 98, 0.12));
+  border-color: rgba(230, 189, 98, 0.38);
+}
+
+.campaign-rail {
+  position: relative;
+}
+
+.campaign-rail::before {
+  content: '';
+  position: absolute;
+  left: 1.06rem;
+  top: 2.5rem;
+  bottom: 2.5rem;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(230, 189, 98, 0.42), transparent);
+}
