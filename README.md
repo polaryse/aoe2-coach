@@ -18,6 +18,28 @@ Then open the local URL Vite prints, usually:
 http://localhost:5173
 ```
 
+## macOS Setup
+
+Install Node.js LTS from [nodejs.org](https://nodejs.org/) or with Homebrew:
+
+```bash
+brew install node
+```
+
+Then from Terminal:
+
+```bash
+cd dev/aoe2-coach
+npm install
+npm run dev
+```
+
+Open the local URL Vite prints, usually:
+
+```text
+http://localhost:5173
+```
+
 ## Notes
 
 - No backend is required.
