@@ -1,11 +1,11 @@
 import type { BuildOrder, Mission, SkillNode } from '../types';
 
 export const sampleMissions: Mission[] = [
-  { id: 'm-dark-tc', title: 'No idle TC in Dark Age', description: 'Keep villagers queued until Feudal is clicked.', xp: 120, category: 'Macro', completed: false },
-  { id: 'm-houses', title: "Don't get housed", description: 'Place every house before you hit the cap.', xp: 90, category: 'Dark Age', completed: false },
-  { id: 'm-scout', title: 'Scout enemy military before 8:30', description: 'Identify barracks, stable, range, or forward pressure in time.', xp: 110, category: 'Scouting', completed: false },
-  { id: 'm-castle-tcs', title: 'Add 2 extra TCs fast', description: 'Drop two extra Town Centers within one minute of Castle Age.', xp: 150, category: 'Castle Age', completed: false },
-  { id: 'm-fight-vills', title: 'Queue villagers during every fight', description: 'Use control groups and hotkeys while fighting.', xp: 130, category: 'Macro', completed: false },
+  { id: 'm-dark-tc', title: 'No idle TC in Dark Age', description: 'Keep villagers queued until Feudal is clicked.', passCriteria: 'Idle TC stays under 25 seconds before Feudal.', successMetric: 'Complete in 3 of your next 5 games.', targetCount: 3, xp: 120, category: 'Macro', completed: false },
+  { id: 'm-houses', title: "Don't get housed", description: 'Place every house before you hit the cap.', passCriteria: 'No house block before 12:00.', successMetric: 'Complete in 3 of your next 5 games.', targetCount: 3, xp: 90, category: 'Dark Age', completed: false },
+  { id: 'm-scout', title: 'Scout enemy military before 8:30', description: 'Identify barracks, stable, range, or forward pressure in time.', passCriteria: 'Confirm the first enemy military building by 8:30.', successMetric: 'Complete in 2 of your next 3 games.', targetCount: 2, xp: 110, category: 'Scouting', completed: false },
+  { id: 'm-castle-tcs', title: 'Add 2 extra TCs fast', description: 'Drop two extra Town Centers within one minute of Castle Age.', passCriteria: 'Both extra TCs started within 60 seconds of Castle Age.', successMetric: 'Complete twice before moving to harder Castle missions.', targetCount: 2, xp: 150, category: 'Castle Age', completed: false },
+  { id: 'm-fight-vills', title: 'Queue villagers during every fight', description: 'Use control groups and hotkeys while fighting.', passCriteria: 'No TC idle spike during the first two major fights.', successMetric: 'Complete in 3 of your next 5 games.', targetCount: 3, xp: 130, category: 'Macro', completed: false },
 ];
 
 export const sampleSkillNodes: SkillNode[] = [
@@ -58,3 +58,4 @@ export const buildOrders: BuildOrder[] = [
     commonMistakes: ['Losing the scout while pushing deer.', 'Floating wood without farms.', 'Attacking blindly into walls and spears.'],
   },
 ];
+

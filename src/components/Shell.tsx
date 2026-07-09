@@ -29,7 +29,7 @@ export function Shell({ activeView, onViewChange, children }: ShellProps) {
             </div>
             <div>
               <p className="font-display text-3xl leading-none text-parchment">AoE2 Coach</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.28em] text-gold">Ranked command</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.28em] text-gold">Ranked Command</p>
             </div>
           </div>
           <div className="rounded border border-vellum/25 bg-parchment/[0.07] px-3 py-2 text-xs leading-5 text-vellum">
@@ -65,17 +65,21 @@ export function Shell({ activeView, onViewChange, children }: ShellProps) {
             <p className="font-display text-2xl text-parchment">AoE2 Coach</p>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onViewChange(item.id)}
-                className={`shrink-0 rounded border px-3 py-2 text-sm ${
-                  activeView === item.id ? 'border-gold bg-banner/30 text-parchment' : 'border-vellum/25 text-vellum'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => onViewChange(item.id)}
+                  className={`inline-flex shrink-0 items-center gap-2 rounded border px-3 py-2 text-sm ${
+                    activeView === item.id ? 'border-gold bg-banner/30 text-parchment shadow-glow' : 'border-vellum/25 text-vellum'
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
         </header>
         <main className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{children}</main>
@@ -83,3 +87,4 @@ export function Shell({ activeView, onViewChange, children }: ShellProps) {
     </div>
   );
 }
+

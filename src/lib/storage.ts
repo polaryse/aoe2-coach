@@ -17,3 +17,4 @@ export function writeStorage<T>(key: string, value: T) {
 export function createId(prefix: string) {
   return `${prefix}-${crypto.randomUUID()}`;
 }
+

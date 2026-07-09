@@ -40,3 +40,4 @@ function CivIconComponent({ civ, name = '', size = 'md', showName = false }: Civ
 }
 
 export const CivIcon = memo(CivIconComponent);
+

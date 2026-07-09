@@ -1,4 +1,4 @@
-import type { FormEvent, InputHTMLAttributes } from 'react';
+import type { FormEvent, InputHTMLAttributes, ReactNode } from 'react';
 import { PlusCircle } from 'lucide-react';
 import { Card } from '../../components/Card';
 import { CivIcon } from '../../components/CivIcon';
@@ -41,45 +41,58 @@ export function GameLog({ games, onGamesChange }: GameLogProps) {
 
   return (
     <>
-      <SectionHeader eyebrow="Game log" title="Record the ranked battle" description="Capture the facts that matter for coaching: economy rhythm, scouting, Castle transition, and the lesson worth carrying forward." />
+      <SectionHeader eyebrow="Game Log" title="Record the ranked battle" description="Capture the facts that matter for coaching: economy rhythm, scouting, Castle transition, and the lesson worth carrying forward." />
       <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
         <Card>
           <form onSubmit={handleSubmit} className="grid gap-4">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field name="date" label="Date" type="date" defaultValue={new Date().toISOString().slice(0, 10)} />
-              <label>
-                <span className="label">Result</span>
-                <select name="result" className="field" defaultValue="Win">
-                  <option>Win</option>
-                  <option>Loss</option>
-                </select>
-              </label>
-              <Field name="myCiv" label="My civ" list="civs" required />
-              <Field name="opponentCiv" label="Opponent civ" list="civs" required />
-              <Field name="map" label="Map" required />
-              <Field name="opening" label="Opening" placeholder="Scouts, archers, drush..." required />
-              <Field name="eloAfter" label="Elo after game" type="number" required />
-              <Field name="idleTcTime" label="Idle TC time (seconds)" type="number" required />
-              <Field name="castleAgeTime" label="Castle Age time" placeholder="22:40" />
-            </div>
+            <FormSection title="Match">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field name="date" label="Date" type="date" defaultValue={new Date().toISOString().slice(0, 10)} />
+                <label>
+                  <span className="label">Result</span>
+                  <select name="result" className="field" defaultValue="Win">
+                    <option>Win</option>
+                    <option>Loss</option>
+                  </select>
+                </label>
+                <Field name="myCiv" label="My civ" list="civs" required />
+                <Field name="opponentCiv" label="Opponent civ" list="civs" required />
+                <Field name="map" label="Map" required />
+                <Field name="eloAfter" label="Elo after game" type="number" required />
+              </div>
+            </FormSection>
             <datalist id="civs">
               {civilizations.map((civ) => <option key={civ.id} value={civ.name} />)}
             </datalist>
 
-            <div className="grid gap-3 rounded border border-gold/25 bg-[#0f0b08]/45 p-4">
-              <Check name="gotHoused" label="I got housed" />
-              <Check name="scoutedEnemyOpening" label="I scouted the enemy opening" />
-              <Check name="addedTwoTcs" label="I added 2 extra TCs within 1 minute of Castle" />
-            </div>
+            <FormSection title="Build timing">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field name="opening" label="Opening" placeholder="Scouts, archers, drush..." required />
+                <Field name="idleTcTime" label="Idle TC time (seconds)" type="number" required />
+                <Field name="castleAgeTime" label="Castle Age time" placeholder="22:40" />
+              </div>
+            </FormSection>
 
-            <label>
-              <span className="label">Main mistake</span>
-              <textarea name="mainMistake" className="field min-h-24" placeholder="What actually cost control of the game?" />
-            </label>
-            <label>
-              <span className="label">Lesson learned</span>
-              <textarea name="lessonLearned" className="field min-h-24" placeholder="One thing to apply next game." />
-            </label>
+            <FormSection title="Habits">
+              <div className="grid gap-3">
+                <Check name="gotHoused" label="I got housed" />
+                <Check name="scoutedEnemyOpening" label="I scouted the enemy opening" />
+                <Check name="addedTwoTcs" label="I added 2 extra TCs within 1 minute of Castle" />
+              </div>
+            </FormSection>
+
+            <FormSection title="Lesson">
+              <div className="grid gap-4">
+                <label>
+                  <span className="label">Main mistake</span>
+                  <textarea name="mainMistake" className="field min-h-24" placeholder="What actually cost control of the game?" />
+                </label>
+                <label>
+                  <span className="label">Lesson learned</span>
+                  <textarea name="lessonLearned" className="field min-h-24" placeholder="One thing to apply next game." />
+                </label>
+              </div>
+            </FormSection>
             <button className="action inline-flex items-center justify-center gap-2" type="submit">
               <PlusCircle className="h-4 w-4" /> Add ranked game
             </button>
@@ -88,7 +101,7 @@ export function GameLog({ games, onGamesChange }: GameLogProps) {
 
         <div className="space-y-4">
           {games.map((game) => (
-            <Card key={game.id}>
+            <div key={game.id} className="rounded border border-gold/20 bg-[#0f0b08]/30 p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="flex items-start gap-3">
                   <CivIcon name={game.myCiv} />
@@ -113,7 +126,7 @@ export function GameLog({ games, onGamesChange }: GameLogProps) {
               </div>
               <p className="mt-4 text-sm text-stone-300"><strong>Main mistake:</strong> {game.mainMistake || 'None recorded'}</p>
               <p className="mt-2 text-sm text-stone-300"><strong>Lesson:</strong> {game.lessonLearned || 'None recorded'}</p>
-            </Card>
+            </div>
           ))}
           {!games.length && <Card className="border-dashed text-vellum">No games logged yet. Your first entry will appear here.</Card>}
         </div>
@@ -132,6 +145,15 @@ function Field(props: InputHTMLAttributes<HTMLInputElement> & { label: string; n
   );
 }
 
+function FormSection({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="rounded border border-gold/15 bg-[#0f0b08]/25 p-4">
+      <h2 className="mb-3 text-sm font-bold text-parchment">{title}</h2>
+      {children}
+    </section>
+  );
+}
+
 function Check({ name, label }: { name: string; label: string }) {
   return (
     <label className="flex items-center gap-3 text-sm text-stone-200">
@@ -143,9 +165,10 @@ function Check({ name, label }: { name: string; label: string }) {
 
 function Tag({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded border border-gold/20 bg-[#0f0b08]/45 p-3">
+    <div className="rounded border border-gold/20 bg-[#0f0b08]/40 p-3">
       <p className="text-xs uppercase tracking-[0.18em] text-vellum">{label}</p>
       <p className="mt-1 font-semibold text-stone-100">{value}</p>
     </div>
   );
 }
+

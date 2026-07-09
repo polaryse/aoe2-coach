@@ -31,21 +31,21 @@ export function CivGuide() {
 
   return (
     <>
-      <SectionHeader eyebrow="Civ guide" title="Choose a ladder identity" description="Browse custom civ crests, beginner-friendly picks, and simple playstyle tags for ranked learning." />
+      <SectionHeader eyebrow="Civ Guide" title="Choose a ladder identity" description="Browse custom civ crests, beginner-friendly picks, and simple playstyle tags for ranked learning." />
 
       <section className="mb-6 grid gap-4 xl:grid-cols-[1fr_0.8fr]">
         <Card className="aoe-plaque">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <EraBadge tone="green">Beginner stable</EraBadge>
-              <h2 className="mt-3 font-display text-3xl text-parchment">Suggested first civs</h2>
+              <h2 className="mt-3 font-display text-2xl text-parchment">Suggested first civs</h2>
               <p className="mt-2 max-w-2xl text-sm text-vellum">These civs reduce early friction or teach clear ranked plans: cavalry macro, simple archers, counters, or forgiving economy.</p>
             </div>
             <RewardPill>{beginnerCivilizations.length} recommended</RewardPill>
           </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {starterCivs.map((civ) => (
-              <div key={civ.id} className="rounded border border-gold/20 bg-[#0f0b08]/45 p-3">
+              <div key={civ.id} className="rounded border border-gold/20 bg-[#0f0b08]/40 p-3">
                 <CivIcon civ={civ} showName />
                 <p className="mt-2 text-xs text-vellum">{civ.beginnerReason}</p>
               </div>
@@ -55,7 +55,7 @@ export function CivGuide() {
 
         <Card>
           <EraBadge tone="blue">Coach note</EraBadge>
-          <h2 className="mt-3 font-display text-3xl text-parchment">How to pick</h2>
+          <h2 className="mt-3 font-display text-2xl text-parchment">How to pick</h2>
           <div className="mt-4 space-y-3 text-sm text-vellum">
             <p>For your first ranked block, pick one civ and one opening for 10 games.</p>
             <p>Cavalry civs are usually easiest for beginners because scouts into knights gives a clear plan and simple map-control feedback.</p>
@@ -64,7 +64,7 @@ export function CivGuide() {
         </Card>
       </section>
 
-      <div className="mb-5 flex items-center gap-3 rounded border border-gold/25 bg-[#0f0b08]/55 px-3 py-2">
+      <div className="mb-5 flex items-center gap-3 rounded border border-gold/25 bg-[#0f0b08]/50 px-3 py-2">
         <Search className="h-5 w-5 text-gold" />
         <input className="field search-field" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search civ, region, style, or beginner tier..." />
       </div>
@@ -110,3 +110,4 @@ const CivCard = memo(function CivCard({ civ }: { civ: Civilization }) {
     </Card>
   );
 });
+

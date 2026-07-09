@@ -23,6 +23,9 @@ export interface Mission {
   id: string;
   title: string;
   description: string;
+  passCriteria: string;
+  successMetric: string;
+  targetCount: number;
   xp: number;
   category: string;
   completed: boolean;
@@ -33,6 +36,8 @@ export interface SkillNode {
   age: 'Dark Age' | 'Feudal Age' | 'Castle Age' | 'Imperial Age';
   title: string;
   description: string;
+  practiceDrill?: string;
+  promotionRule?: string;
   completed: boolean;
 }
 
@@ -43,6 +48,19 @@ export interface ReplayReview {
   cause: string;
   category: ReviewCategory;
   nextGameMission: string;
+  sourceFileName?: string;
+  sourceType?: 'Readable export' | 'CaptureAge .caderec';
+  parserConfidence?: 'High' | 'Medium' | 'Low';
+  parserNotes?: string[];
+  timelineEvents?: TimelineEvent[];
+  coachingNotes?: string[];
+}
+
+export interface TimelineEvent {
+  minute: string;
+  label: string;
+  category: ReviewCategory;
+  severity: 'Info' | 'Warning' | 'Critical';
 }
 
 export interface BuildOrder {
@@ -69,3 +87,4 @@ export interface Civilization {
     secondary: string;
   };
 }
+

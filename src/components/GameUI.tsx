@@ -53,8 +53,51 @@ export function StatPlaque({ label, value, detail, icon }: { label: string; valu
 
 export function RewardPill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded border border-gold/30 bg-[#0f0b08]/50 px-3 py-1 text-sm font-bold text-gold shadow-glow">
+    <span className="inline-flex items-center rounded border border-gold/30 bg-[#0f0b08]/50 px-3 py-1 text-sm font-bold text-gold">
       {children}
     </span>
   );
 }
+
+export function ResourceChip({ type, value }: { type: 'food' | 'wood' | 'gold' | 'stone'; value?: string }) {
+  const resources = {
+    food: { label: 'Food', mark: 'F', classes: 'border-green-600/40 bg-green-950/30 text-green-100' },
+    wood: { label: 'Wood', mark: 'W', classes: 'border-amber-800/50 bg-amber-950/30 text-amber-100' },
+    gold: { label: 'Gold', mark: 'G', classes: 'border-gold/40 bg-gold/10 text-gold' },
+    stone: { label: 'Stone', mark: 'S', classes: 'border-stone-400/40 bg-stone-900/40 text-stone-100' },
+  };
+  const resource = resources[type];
+
+  return (
+    <span className={`inline-flex items-center gap-2 rounded border px-2.5 py-1 text-xs font-semibold ${resource.classes}`}>
+      <span className="grid h-5 w-5 place-items-center rounded bg-black/30 font-bold">{resource.mark}</span>
+      {value ?? resource.label}
+    </span>
+  );
+}
+
+export function AgeMarker({ age }: { age: 'Dark' | 'Feudal' | 'Castle' | 'Imperial' }) {
+  const ages = {
+    Dark: 'I',
+    Feudal: 'II',
+    Castle: 'III',
+    Imperial: 'IV',
+  };
+
+  return (
+    <span className="inline-flex items-center gap-2 rounded border border-gold/25 bg-[#0f0b08]/40 px-3 py-1 text-xs font-bold text-parchment">
+      <span className="font-display text-gold">{ages[age]}</span>
+      {age}
+    </span>
+  );
+}
+
+export function TimelineStep({ index, children }: { index: number; children: ReactNode }) {
+  return (
+    <div className="relative flex gap-3 rounded border border-gold/15 bg-[#0f0b08]/30 p-3">
+      <span className="grid h-7 w-7 shrink-0 place-items-center rounded border border-gold/30 bg-[#171008] text-sm font-bold text-gold">{index}</span>
+      <p className="text-sm text-parchment">{children}</p>
+    </div>
+  );
+}
+

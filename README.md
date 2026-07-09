@@ -15,6 +15,7 @@ The app runs entirely in the browser. There is no backend, no account system, an
 - Work through a beginner-focused skill tree from Dark Age to Imperial Age.
 - Browse build orders for beginner scout openings.
 - Review replays by identifying the minute control was lost and the next-game mission.
+- Upload a local CaptureAge `.caderec` recording or readable export to extract timeline signals and coaching notes. Native parsing is experimental and improves with real sample validation.
 - Browse civilization crests, beginner civ suggestions, and playstyle tags.
 
 ## Privacy
@@ -80,3 +81,5 @@ http://localhost:5173
 This is v0.1: a polished local-first foundation for ranked improvement tracking. The focus is currently on habit tracking, beginner missions, local persistence, and a strong game companion feel.
 
 Future ideas include richer replay workflows, match-up notes, more build orders, and import/export.
+
+See [ROADMAP.md](ROADMAP.md) for planned requirements and future product direction.

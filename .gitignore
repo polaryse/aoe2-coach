@@ -23,6 +23,10 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Local planning / agent briefs
+docs/agents/
+.agents/
+
 # Local-only app exports or backups
 exports/
 backups/

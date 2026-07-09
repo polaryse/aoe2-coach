@@ -32,12 +32,12 @@ const civRows: Array<Omit<Civilization, 'colors'>> = [
   { id: 'goths', name: 'Goths', initials: 'GO', focus: 'Infantry', region: 'Central Europe', beginnerTier: 'Friendly', beginnerReason: 'Teaches production and flooding, though early defense matters.' },
   { id: 'gurjaras', name: 'Gurjaras', initials: 'GU', focus: 'Camels', region: 'South Asia', beginnerTier: 'Advanced', beginnerReason: 'Excellent counters, but unusual economy and unit choices.' },
   { id: 'hindustanis', name: 'Hindustanis', initials: 'HI', focus: 'Camels', region: 'South Asia', beginnerTier: 'Friendly', beginnerReason: 'Strong economy and counters, with clear anti-cavalry tools.' },
-  { id: 'huns', name: 'Huns', initials: 'HU', focus: 'Cavalry archers', region: 'Steppe', beginnerTier: 'Recommended', beginnerReason: 'No houses removes one beginner failure point.' },
+  { id: 'huns', name: 'Huns', initials: 'HU', focus: 'Cavalry archers', region: 'Steppe', beginnerTier: 'Friendly', beginnerReason: 'No houses makes them forgiving, but they can hide house-planning fundamentals.' },
   { id: 'incas', name: 'Incas', initials: 'IN', focus: 'Infantry', region: 'Americas', beginnerTier: 'Friendly', beginnerReason: 'Flexible counter units and sturdy villagers are forgiving.' },
   { id: 'italians', name: 'Italians', initials: 'IT', focus: 'Naval', region: 'Mediterranean', beginnerTier: 'Friendly', beginnerReason: 'Cheaper age-ups make macro mistakes less punishing.' },
   { id: 'japanese', name: 'Japanese', initials: 'JA', focus: 'Infantry', region: 'East Asia', beginnerTier: 'Friendly', beginnerReason: 'Cheap camps smooth early economy and infantry are clear.' },
   { id: 'jurchens', name: 'Jurchens', initials: 'JU', focus: 'Cavalry', region: 'East Asia', beginnerTier: 'Advanced', beginnerReason: 'Newer civ identity; best after fundamentals are stable.' },
-  { id: 'khmer', name: 'Khmer', initials: 'KH', focus: 'Elephants', region: 'Southeast Asia', beginnerTier: 'Recommended', beginnerReason: 'No building requirements simplify age-up flow.' },
+  { id: 'khmer', name: 'Khmer', initials: 'KH', focus: 'Elephants', region: 'Southeast Asia', beginnerTier: 'Friendly', beginnerReason: 'No building requirements simplify age-up flow, but beginners should still practice clean structure habits.' },
   { id: 'khitans', name: 'Khitans', initials: 'KI', focus: 'Cavalry archers', region: 'East Asia', beginnerTier: 'Advanced', beginnerReason: 'Mobile army control and timing matter a lot.' },
   { id: 'koreans', name: 'Koreans', initials: 'KO', focus: 'Naval', region: 'East Asia', beginnerTier: 'Advanced', beginnerReason: 'Defensive and siege strengths need map awareness.' },
   { id: 'lac-viet', name: 'Lac Viet', initials: 'LV', focus: 'Flexible', region: 'Return of Rome', beginnerTier: 'Advanced', beginnerReason: 'Special roster context; learn standard ranked civs first.' },
@@ -67,7 +67,7 @@ const civRows: Array<Omit<Civilization, 'colors'>> = [
   { id: 'tupi', name: 'Tupi', initials: 'TP', focus: 'Archers', region: 'Americas', beginnerTier: 'Advanced', beginnerReason: 'Newer civ; start with classic beginner civs before specializing.' },
   { id: 'turks', name: 'Turks', initials: 'TU', focus: 'Gunpowder', region: 'Middle East', beginnerTier: 'Advanced', beginnerReason: 'Power spikes are sharp, but trash options are limited.' },
   { id: 'vietnamese', name: 'Vietnamese', initials: 'VI', focus: 'Archers', region: 'Southeast Asia', beginnerTier: 'Recommended', beginnerReason: 'Enemy TC reveal makes early scouting less punishing.' },
-  { id: 'vikings', name: 'Vikings', initials: 'VK', focus: 'Infantry', region: 'Northern Europe', beginnerTier: 'Recommended', beginnerReason: 'Free wheelbarrow/hand cart teaches strong economy rhythm.' },
+  { id: 'vikings', name: 'Vikings', initials: 'VK', focus: 'Infantry', region: 'Northern Europe', beginnerTier: 'Friendly', beginnerReason: 'Free wheelbarrow/hand cart teaches economy rhythm, but they are less cavalry-comfortable for first ladder blocks.' },
   { id: 'wei', name: 'Wei', initials: 'WE', focus: 'Cavalry', region: 'East Asia', beginnerTier: 'Advanced', beginnerReason: 'Newer civ with less beginner reference material.' },
   { id: 'wu', name: 'Wu', initials: 'WU', focus: 'Archers', region: 'East Asia', beginnerTier: 'Advanced', beginnerReason: 'Newer civ; better once archer fundamentals are reliable.' },
 ];
@@ -83,3 +83,4 @@ export function findCivilization(name: string) {
   const normalized = name.trim().toLowerCase();
   return civilizations.find((civ) => civ.name.toLowerCase() === normalized);
 }
+

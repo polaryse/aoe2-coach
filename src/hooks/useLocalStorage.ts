@@ -10,3 +10,4 @@ export function useLocalStorage<T>(key: string, fallback: T) {
 
   return [value, setValue] as const;
 }
+

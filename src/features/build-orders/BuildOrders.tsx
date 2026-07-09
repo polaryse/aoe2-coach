@@ -1,13 +1,13 @@
 import { Card } from '../../components/Card';
 import { CivIcon } from '../../components/CivIcon';
-import { EraBadge } from '../../components/GameUI';
+import { EraBadge, TimelineStep } from '../../components/GameUI';
 import { SectionHeader } from '../../components/SectionHeader';
 import { buildOrders } from '../../lib/sampleData';
 
 export function BuildOrders() {
   return (
     <>
-      <SectionHeader eyebrow="Build orders" title="Readable openings for ranked practice" description="Beginner-friendly cards for scout openings that connect clean early execution to Castle Age plans." />
+      <SectionHeader eyebrow="Build Orders" title="Readable openings for ranked practice" description="Beginner-friendly cards for scout openings that connect clean early execution to Castle Age plans." />
       <div className="grid gap-6 xl:grid-cols-3">
         {buildOrders.map((order) => (
           <Card key={order.id}>
@@ -20,10 +20,7 @@ export function BuildOrders() {
 
             <div className="mt-5 space-y-3">
               {order.steps.map((step, index) => (
-                <div key={step} className="flex gap-3 rounded border border-gold/20 bg-[#0f0b08]/45 p-3">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded border border-gold/40 bg-gradient-to-b from-gold to-bronze text-sm font-bold text-[#171008]">{index + 1}</span>
-                  <p className="text-sm text-parchment">{step}</p>
-                </div>
+                <TimelineStep key={step} index={index + 1}>{step}</TimelineStep>
               ))}
             </div>
 
@@ -48,3 +45,4 @@ function Info({ title, items }: { title: string; items: string[] }) {
     </div>
   );
 }
+
