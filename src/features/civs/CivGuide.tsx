@@ -31,7 +31,7 @@ export function CivGuide() {
 
   return (
     <>
-      <SectionHeader eyebrow="Civ Guide" title="Choose a ladder identity" description="Browse custom civ crests, beginner-friendly picks, and simple playstyle tags for ranked learning." />
+      <SectionHeader eyebrow="Civ Guide" title="Choose a Ladder Identity" description="Browse custom civ crests, beginner-friendly picks, and simple playstyle tags for ranked learning." />
 
       <section className="mb-6 grid gap-4 xl:grid-cols-[1fr_0.8fr]">
         <Card className="aoe-plaque">

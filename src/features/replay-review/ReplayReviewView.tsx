@@ -61,7 +61,7 @@ export function ReplayReviewView({ reviews, onReviewsChange }: ReplayReviewViewP
 
   return (
     <>
-      <SectionHeader eyebrow="Replay Review" title="Find the turning point" description="Upload local timeline data, review the key moments, and save one practical next-game mission." />
+      <SectionHeader eyebrow="Replay Review" title="Find the Turning Point" description="Upload local timeline data, review the key moments, and save one practical next-game mission." />
       <div className="grid gap-6 xl:grid-cols-[0.85fr_1.15fr]">
         <Card>
           <div className="mb-5 rounded border border-gold/25 bg-[#0f0b08]/40 p-4">

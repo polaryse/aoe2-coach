@@ -41,7 +41,7 @@ export function GameLog({ games, onGamesChange }: GameLogProps) {
 
   return (
     <>
-      <SectionHeader eyebrow="Game Log" title="Record the ranked battle" description="Capture the facts that matter for coaching: economy rhythm, scouting, Castle transition, and the lesson worth carrying forward." />
+      <SectionHeader eyebrow="Game Log" title="Record the Ranked Battle" description="Capture the facts that matter for coaching: economy rhythm, scouting, Castle transition, and the lesson worth carrying forward." />
       <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
         <Card>
           <form onSubmit={handleSubmit} className="grid gap-4">

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Shell } from '../components/Shell';
 import { sampleMissions, sampleSkillNodes } from '../lib/sampleData';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -18,6 +18,15 @@ export function App() {
   const [missions, setMissions] = useLocalStorage<Mission[]>('aoe2coach.missions', sampleMissions);
   const [skills, setSkills] = useLocalStorage<SkillNode[]>('aoe2coach.skills', sampleSkillNodes);
   const [reviews, setReviews] = useLocalStorage<ReplayReview[]>('aoe2coach.reviews', []);
+
+  useEffect(() => {
+    const completedById = new Map(missions.map((mission) => [mission.id, mission.completed]));
+    const syncedMissions = sampleMissions.map((mission) => ({ ...mission, completed: completedById.get(mission.id) ?? mission.completed }));
+
+    if (JSON.stringify(missions) !== JSON.stringify(syncedMissions)) {
+      setMissions(syncedMissions);
+    }
+  }, [missions, setMissions]);
 
   const sortedGames = useMemo(() => [...games].sort((a, b) => b.date.localeCompare(a.date)), [games]);
   const completedXp = missions.filter((mission) => mission.completed).reduce((sum, mission) => sum + mission.xp, 0);

@@ -37,7 +37,7 @@ export function SkillTree({ skills, onSkillsChange }: SkillTreeProps) {
 
   return (
     <>
-      <SectionHeader eyebrow="Skill Tree" title="Build your ranked toolkit" description="Move through one focused training path at a time. Select a skill to see the drill, promotion rule, and next ranked habit." />
+      <SectionHeader eyebrow="Skill Tree" title="Build Your Ranked Toolkit" description="Move through one focused training path at a time. Select a skill to see the drill, promotion rule, and next ranked habit." />
 
       <section className="mb-6 grid gap-4 lg:grid-cols-[0.65fr_1.35fr]">
         <Card className="aoe-plaque">

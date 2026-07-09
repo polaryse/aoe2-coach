@@ -7,7 +7,7 @@ import { buildOrders } from '../../lib/sampleData';
 export function BuildOrders() {
   return (
     <>
-      <SectionHeader eyebrow="Build Orders" title="Readable openings for ranked practice" description="Beginner-friendly cards for scout openings that connect clean early execution to Castle Age plans." />
+      <SectionHeader eyebrow="Build Orders" title="Readable Openings for Ranked Practice" description="Beginner-friendly cards for scout openings that connect clean early execution to Castle Age plans." />
       <div className="grid gap-6 xl:grid-cols-3">
         {buildOrders.map((order) => (
           <Card key={order.id}>

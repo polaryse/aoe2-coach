@@ -29,7 +29,7 @@ export function Dashboard({ games, missions, xp }: DashboardProps) {
 
   return (
     <>
-      <SectionHeader eyebrow="Command Center" title="Ranked improvement dashboard" description="Track your ladder direction, current training focus, and the habits that decide close games." />
+      <SectionHeader eyebrow="Command Center" title="Ranked Improvement Dashboard" description="Track your ladder direction, current training focus, and the habits that decide close games." />
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <StatPlaque label="Current Elo" value={currentElo ? currentElo.toString() : 'No games'} detail="Latest logged rating" icon={<Crown className="h-9 w-9" />} />
