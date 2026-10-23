@@ -28,6 +28,7 @@ Thumbs.db
 # Local planning / agent briefs
 docs/agents/
 .agents/
+docs/mockups/
 
 # Local-only app exports or backups
 exports/
