@@ -2,12 +2,22 @@ import type { ReactNode } from 'react';
 import { Activity, Castle, Eye, Home, Search, Target } from 'lucide-react';
 import { Card } from '../../components/Card';
 import { SectionHeader } from '../../components/SectionHeader';
-import type { Game } from '../../types';
+import type { Game, ReplayReview } from '../../types';
 import type { CoachRecommendation } from './analyse';
 import { getCoachRecommendationDetails } from './analyse';
 
-export function CoachAnalysis({ games }: { games: Game[] }) {
-  const recommendations = getCoachRecommendationDetails(games);
+export function CoachAnalysis({ games, reviews }: { games: Game[]; reviews: ReplayReview[] }) {
+  const latestReplay = reviews.find((review) => review.coachingGoals?.length);
+  const replayRecommendations: CoachRecommendation[] = (latestReplay?.coachingGoals ?? []).map((goal) => ({
+    title: goal.title,
+    trigger: goal.evidence,
+    likelyCause: goal.diagnosis,
+    replayCheck: `Return to ${latestReplay?.sourceFileName ?? 'the latest replay'} and verify the evidence around this signal.`,
+    nextMission: goal.mission,
+    successMetric: goal.successMetric,
+  }));
+  const recommendations = [...replayRecommendations, ...getCoachRecommendationDetails(games)]
+    .filter((recommendation, index, all) => all.findIndex((candidate) => candidate.title === recommendation.title) === index);
   const primary = recommendations[0];
   const recentGames = games.slice(0, 10);
   const avgIdle = recentGames.length ? Math.round(recentGames.reduce((sum, game) => sum + game.idleTcTime, 0) / recentGames.length) : 0;
@@ -23,7 +33,7 @@ export function CoachAnalysis({ games }: { games: Game[] }) {
 
       <section className="grid gap-5 xl:grid-cols-[1.2fr_0.8fr]">
         <Card className="aoe-plaque">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold">Recommended Focus</p>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold">{latestReplay ? 'Replay-Derived Focus' : 'Recommended Focus'}</p>
           <h2 className="mt-3 font-display text-4xl text-parchment">{primary.title}</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-vellum">{primary.trigger}</p>
 
@@ -35,6 +45,7 @@ export function CoachAnalysis({ games }: { games: Game[] }) {
           <div className="mt-5 rounded border border-gold/15 bg-[#0f0b08]/30 p-4">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">Replay Check</p>
             <p className="mt-2 text-sm leading-6 text-vellum">{primary.replayCheck}</p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-moss">Pass condition · {primary.successMetric}</p>
           </div>
         </Card>
 

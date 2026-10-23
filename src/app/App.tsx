@@ -21,7 +21,12 @@ export function App() {
 
   useEffect(() => {
     const completedById = new Map(missions.map((mission) => [mission.id, mission.completed]));
-    const syncedMissions = sampleMissions.map((mission) => ({ ...mission, completed: completedById.get(mission.id) ?? mission.completed }));
+    const sampleIds = new Set(sampleMissions.map((mission) => mission.id));
+    const customMissions = missions.filter((mission) => !sampleIds.has(mission.id));
+    const syncedMissions = [
+      ...customMissions,
+      ...sampleMissions.map((mission) => ({ ...mission, completed: completedById.get(mission.id) ?? mission.completed })),
+    ];
 
     if (JSON.stringify(missions) !== JSON.stringify(syncedMissions)) {
       setMissions(syncedMissions);
@@ -33,14 +38,23 @@ export function App() {
 
   return (
     <Shell activeView={activeView} onViewChange={setActiveView}>
-      {activeView === 'dashboard' && <Dashboard games={sortedGames} missions={missions} xp={completedXp} />}
+      {activeView === 'dashboard' && <Dashboard games={sortedGames} missions={missions} skills={skills} xp={completedXp} onNavigate={setActiveView} />}
       {activeView === 'games' && <GameLog games={sortedGames} onGamesChange={setGames} />}
-      {activeView === 'coach' && <CoachAnalysis games={sortedGames} />}
+      {activeView === 'coach' && <CoachAnalysis games={sortedGames} reviews={reviews} />}
       {activeView === 'missions' && <MissionBoard missions={missions} onMissionsChange={setMissions} />}
       {activeView === 'skills' && <SkillTree skills={skills} onSkillsChange={setSkills} />}
       {activeView === 'civs' && <CivGuide />}
       {activeView === 'builds' && <BuildOrders />}
-      {activeView === 'reviews' && <ReplayReviewView reviews={reviews} onReviewsChange={setReviews} />}
+      {activeView === 'reviews' && (
+        <ReplayReviewView
+          reviews={reviews}
+          onReviewsChange={setReviews}
+          onAddMissions={(newMissions) => {
+            const newIds = new Set(newMissions.map((mission) => mission.id));
+            setMissions([...newMissions, ...missions.filter((mission) => !newIds.has(mission.id))]);
+          }}
+        />
+      )}
     </Shell>
   );
 }

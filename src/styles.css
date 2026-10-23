@@ -10,7 +10,34 @@ body {
   margin: 0;
   min-width: 320px;
   font-family: "Segoe UI Variable", "Segoe UI", Inter, system-ui, sans-serif;
-  background: #0a0c10;
+  background: #0b0f12;
+  color: #ece7dc;
+  font-feature-settings: "cv02", "cv03", "cv04";
+  text-rendering: geometricPrecision;
+}
+
+::selection {
+  background: rgba(230, 189, 98, 0.32);
+  color: #fff8df;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 12, 16, 0.72);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid rgba(10, 12, 16, 0.72);
+  border-radius: 999px;
+  background: rgba(216, 189, 131, 0.42);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 189, 98, 0.62);
 }
 
 input,
@@ -21,14 +48,15 @@ textarea {
 
 .field {
   width: 100%;
-  border-radius: 0.25rem;
-  border: 1px solid rgba(216, 189, 131, 0.28);
-  background: rgba(16, 13, 10, 0.52);
-  padding: 0.5rem 0.75rem;
+  border-radius: 0.125rem;
+  border: 1px solid rgba(156, 165, 169, 0.24);
+  background: #0d1215;
+  padding: 0.62rem 0.8rem;
   font-size: 0.875rem;
-  color: #f2dfaf;
+  color: #ece7dc;
   outline: none;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .field::placeholder {
@@ -36,8 +64,9 @@ textarea {
 }
 
 .field:focus {
-  border-color: #e6bd62;
-  box-shadow: 0 0 0 2px rgba(230, 189, 98, 0.2);
+  border-color: #d5ad57;
+  background: #11171a;
+  box-shadow: 0 0 0 2px rgba(213, 173, 87, 0.16);
 }
 
 .field.search-field {
@@ -52,31 +81,110 @@ textarea {
   display: block;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #d8bd83;
+  letter-spacing: 0;
+  color: #9ca5a9;
 }
 
 .action {
-  border-radius: 0.25rem;
-  border: 1px solid rgba(230, 189, 98, 0.8);
-  background: linear-gradient(to bottom, #e6bd62, #c59246);
-  padding: 0.5rem 1rem;
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  border: 1px solid #d5ad57;
+  background: #d5ad57;
+  padding: 0.58rem 1rem;
   font-size: 0.875rem;
   font-weight: 700;
-  color: #171008;
-  box-shadow: 0 0 42px rgba(230, 189, 98, 0.18);
-  transition: filter 160ms ease, transform 160ms ease;
+  color: #17140e;
+  box-shadow: none;
+  transition: filter 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 .action:hover {
-  filter: brightness(1.12);
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(213, 173, 87, 0.12);
+}
+
+.secondary-action {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(156, 165, 169, 0.3);
+  border-radius: 0.125rem;
+  background: #161c20;
+  padding: 0.58rem 1rem;
+  color: #c7cdce;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.secondary-action:hover {
+  border-color: rgba(213, 173, 87, 0.65);
+  background: #1b2227;
+  color: #ece7dc;
+}
+
+.section-kicker {
+  color: #d5ad57;
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.dashboard-hero {
+  background-image: linear-gradient(105deg, rgba(152, 56, 68, 0.12), transparent 34%);
+}
+
+.app-shell button:focus-visible,
+.app-shell input:focus-visible,
+.app-shell select:focus-visible,
+.app-shell textarea:focus-visible {
+  outline: 2px solid rgba(213, 173, 87, 0.72);
+  outline-offset: 2px;
+}
+
+.app-shell .shadow-glow,
+.app-shell .shadow-keep {
+  box-shadow: none;
+}
+
+.app-shell [class*="bg-[#d8bd83]"],
+.app-shell [class*="bg-[#f0dfb3]"],
+.app-shell [class*="bg-[#ead9aa]"],
+.app-shell [class*="bg-[#fff3c9]"],
+.app-shell [class*="bg-[#b99151]"] {
+  background: #141a1e !important;
+}
+
+.app-shell [class*="text-[#2a1b10]"],
+.app-shell [class*="text-[#6b301f]"] {
+  color: #ece7dc !important;
+}
+
+.app-shell [class*="text-[#5a4026]"],
+.app-shell [class*="text-[#765f3c]"] {
+  color: #9ca5a9 !important;
+}
+
+.app-shell [class*="border-[#8a6733]"],
+.app-shell [class*="border-[#c7a66d]"],
+.app-shell [class*="border-[#6b301f]"] {
+  border-color: rgba(156, 165, 169, 0.2) !important;
+}
+
+.app-shell [class*="divide-[#c7a66d]"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(156, 165, 169, 0.16) !important;
 }
 
 .aoe-backdrop {
-  background:
-    radial-gradient(circle at 18% 8%, rgba(230, 189, 98, 0.22), transparent 28%),
-    radial-gradient(circle at 85% 18%, rgba(126, 34, 48, 0.26), transparent 30%),
-    linear-gradient(135deg, rgba(10, 12, 16, 0.96), rgba(28, 25, 20, 0.94) 48%, rgba(19, 38, 45, 0.9));
+  background: #0b0f12;
 }
 
 .aoe-backdrop::before {
@@ -84,31 +192,21 @@ textarea {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(rgba(242, 223, 175, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(242, 223, 175, 0.035) 1px, transparent 1px),
-    radial-gradient(circle at center, transparent 0, rgba(0, 0, 0, 0.36) 78%);
-  background-size: 54px 54px, 54px 54px, 100% 100%;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.25));
+  background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 70%);
 }
 
 .aoe-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(216, 189, 131, 0.24);
-  background:
-    linear-gradient(180deg, rgba(44, 37, 27, 0.86), rgba(19, 17, 14, 0.9)),
-    repeating-linear-gradient(90deg, rgba(242, 223, 175, 0.04) 0 1px, transparent 1px 18px);
-  box-shadow: inset 0 1px 0 rgba(242, 223, 175, 0.1), 0 14px 32px rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(156, 165, 169, 0.14);
+  background: #141a1e;
+  box-shadow: none;
 }
 
 .aoe-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border: 1px solid rgba(0, 0, 0, 0.38);
-  box-shadow: inset 0 0 0 2px rgba(197, 146, 70, 0.08);
+  content: none;
 }
 
 .aoe-card > * {
@@ -117,10 +215,27 @@ textarea {
 }
 
 .aoe-plaque {
-  background:
-    linear-gradient(180deg, rgba(126, 34, 48, 0.42), rgba(32, 20, 16, 0.52)),
-    linear-gradient(90deg, rgba(230, 189, 98, 0.12), transparent 28%, transparent 72%, rgba(230, 189, 98, 0.12));
-  border-color: rgba(230, 189, 98, 0.38);
+  border-top: 3px solid #d5ad57;
+  background: #161c20;
+  border-right-color: rgba(156,165,169,.14);
+  border-bottom-color: rgba(156,165,169,.14);
+  border-left-color: rgba(156,165,169,.14);
+}
+
+.command-header {
+  position: relative;
+  border-bottom: 1px solid rgba(156, 165, 169, 0.16);
+  padding-bottom: 1.1rem;
+}
+
+.command-header::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 7rem;
+  background: #d5ad57;
 }
 
 .campaign-rail {

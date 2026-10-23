@@ -79,8 +79,9 @@ export const civilizations: Civilization[] = civRows.map((civ, index) => {
 
 export const beginnerCivilizations = civilizations.filter((civ) => civ.beginnerTier === 'Recommended');
 
-export function findCivilization(name: string) {
-  const normalized = name.trim().toLowerCase();
+export function findCivilization(name?: string) {
+  const normalized = typeof name === 'string' ? name.trim().toLowerCase() : '';
+  if (!normalized) return undefined;
   return civilizations.find((civ) => civ.name.toLowerCase() === normalized);
 }
 

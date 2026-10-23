@@ -6,10 +6,12 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ eyebrow, title, description }: SectionHeaderProps) {
   return (
-    <div className="mb-7 border-b border-gold/25 pb-5">
-      <p className="text-xs font-bold uppercase tracking-[0.32em] text-gold">{eyebrow}</p>
-      <h1 className="mt-2 font-display text-4xl text-parchment drop-shadow md:text-5xl">{title}</h1>
-      <p className="mt-3 max-w-3xl text-vellum">{description}</p>
+    <div className="command-header mb-6">
+      <div>
+        <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-gold">{eyebrow}</p>
+        <h1 className="mt-2 font-display text-3xl font-semibold text-parchment md:text-4xl">{title}</h1>
+        <p className="mt-2 max-w-3xl text-sm leading-6 text-vellum">{description}</p>
+      </div>
     </div>
   );
 }

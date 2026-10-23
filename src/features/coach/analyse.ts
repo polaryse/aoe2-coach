@@ -16,11 +16,11 @@ export function getCoachRecommendations(games: Game[]) {
 export function getCoachRecommendationDetails(games: Game[]): CoachRecommendation[] {
   if (games.length === 0) {
     return [{
-      title: 'Log your first ranked game',
-      trigger: 'No ranked games have been logged yet.',
+      title: 'Log your first match',
+      trigger: 'No matches have been logged yet.',
       likelyCause: 'AoE2 Coach needs at least one game to identify useful patterns.',
       replayCheck: 'After your next game, record the opening, idle TC time, scouting, and main mistake.',
-      nextMission: 'Play one ranked game with no idle TC before clicking Feudal.',
+      nextMission: 'Play one match with no idle TC before clicking Feudal.',
       successMetric: 'A complete game log with one lesson learned.',
     }];
   }

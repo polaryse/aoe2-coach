@@ -12,15 +12,15 @@ export function ProgressRing({ value, label, detail }: ProgressRingProps) {
   return (
     <div className="relative grid place-items-center">
       <div
-        className="h-32 w-32 rounded-full"
+        className="h-28 w-28 rounded-full p-1"
         style={{
           background: `conic-gradient(#e6bd62 ${safeValue * 3.6}deg, rgba(216, 189, 131, 0.16) 0deg)`,
         }}
       >
-        <div className="m-2 grid h-28 w-28 place-items-center rounded-full border border-gold/25 bg-[#15100c] text-center shadow-inner">
+        <div className="grid h-full w-full place-items-center rounded-full border border-gold/25 bg-[#11171a] text-center">
           <div>
-            <p className="font-display text-3xl text-parchment">{Math.round(safeValue)}%</p>
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold">{label}</p>
+            <p className="font-display text-2xl font-semibold text-parchment">{Math.round(safeValue)}%</p>
+            <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-gold">{label}</p>
           </div>
         </div>
       </div>
@@ -37,23 +37,23 @@ export function EraBadge({ children, tone = 'gold' }: { children: ReactNode; ton
     green: 'border-moss/60 bg-moss/20 text-green-100',
   };
 
-  return <span className={`inline-flex items-center rounded border px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] ${tones[tone]}`}>{children}</span>;
+  return <span className={`inline-flex items-center rounded-sm border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${tones[tone]}`}>{children}</span>;
 }
 
 export function StatPlaque({ label, value, detail, icon }: { label: string; value: string; detail: string; icon: ReactNode }) {
   return (
-    <div className="aoe-plaque relative overflow-hidden rounded border p-5">
-      <div className="absolute right-4 top-4 text-gold/30">{icon}</div>
-      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold">{label}</p>
-      <p className="mt-3 font-display text-4xl text-parchment">{value}</p>
-      <p className="mt-1 text-sm text-vellum">{detail}</p>
+    <div className="relative overflow-hidden border border-white/10 bg-[#141a1e] p-5">
+      <div className="absolute right-4 top-4 grid h-9 w-9 place-items-center border border-white/10 bg-black/10 text-gold/70">{icon}</div>
+      <p className="pr-12 text-[9px] font-bold uppercase tracking-[0.12em] text-vellum">{label}</p>
+      <p className="mt-3 font-display text-3xl font-semibold leading-none text-parchment">{value}</p>
+      <p className="mt-2 text-xs leading-5 text-vellum">{detail}</p>
     </div>
   );
 }
 
 export function RewardPill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded border border-gold/30 bg-[#0f0b08]/50 px-3 py-1 text-sm font-bold text-gold">
+    <span className="inline-flex items-center rounded-sm border border-gold/30 bg-gold/5 px-3 py-1 text-xs font-bold text-gold">
       {children}
     </span>
   );
@@ -69,8 +69,8 @@ export function ResourceChip({ type, value }: { type: 'food' | 'wood' | 'gold' |
   const resource = resources[type];
 
   return (
-    <span className={`inline-flex items-center gap-2 rounded border px-2.5 py-1 text-xs font-semibold ${resource.classes}`}>
-      <span className="grid h-5 w-5 place-items-center rounded bg-black/30 font-bold">{resource.mark}</span>
+    <span className={`inline-flex items-center gap-2 rounded-sm border px-2.5 py-1 text-xs font-semibold ${resource.classes}`}>
+      <span className="grid h-5 w-5 place-items-center bg-black/30 font-bold">{resource.mark}</span>
       {value ?? resource.label}
     </span>
   );
@@ -85,8 +85,8 @@ export function AgeMarker({ age }: { age: 'Dark' | 'Feudal' | 'Castle' | 'Imperi
   };
 
   return (
-    <span className="inline-flex items-center gap-2 rounded border border-gold/25 bg-[#0f0b08]/40 px-3 py-1 text-xs font-bold text-parchment">
-      <span className="font-display text-gold">{ages[age]}</span>
+    <span className="inline-flex items-center gap-2 rounded-sm border border-white/10 bg-[#11171a] px-3 py-1 text-xs font-bold text-parchment">
+      <span className="font-serif text-gold">{ages[age]}</span>
       {age}
     </span>
   );
@@ -94,8 +94,8 @@ export function AgeMarker({ age }: { age: 'Dark' | 'Feudal' | 'Castle' | 'Imperi
 
 export function TimelineStep({ index, children }: { index: number; children: ReactNode }) {
   return (
-    <div className="relative flex gap-3 rounded border border-gold/15 bg-[#0f0b08]/30 p-3">
-      <span className="grid h-7 w-7 shrink-0 place-items-center rounded border border-gold/30 bg-[#171008] text-sm font-bold text-gold">{index}</span>
+    <div className="relative flex gap-3 border-b border-white/10 bg-[#11171a] p-3">
+      <span className="grid h-7 w-7 shrink-0 place-items-center border border-gold/30 bg-black/15 text-sm font-bold text-gold">{index}</span>
       <p className="text-sm text-parchment">{children}</p>
     </div>
   );

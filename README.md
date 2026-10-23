@@ -15,7 +15,7 @@ The app runs entirely in the browser. There is no backend, no account system, an
 - Work through a beginner-focused skill tree from Dark Age to Imperial Age.
 - Browse build orders for beginner scout openings.
 - Review replays by identifying the minute control was lost and the next-game mission.
-- Upload a local CaptureAge `.caderec` recording or readable export to extract timeline signals and coaching notes. Native parsing is experimental and improves with real sample validation.
+- Upload a local AoE2 `.aoe2record`, CaptureAge `.caderec`, or readable export to extract timeline signals and coaching notes. Current DE `.aoe2record` files are decoded locally for player identities, civilizations, age timings, build/research milestones, final resource snapshots, and estimated idle-TC time. AoE2 DE recordings are usually stored in `C:\Users\<you>\Games\Age of Empires 2 DE\<profile-id>\savegame`; `.caderec` parsing remains experimental.
 - Browse civilization crests, beginner civ suggestions, and playstyle tags.
 
 ## Privacy
@@ -54,6 +54,30 @@ Open the local URL Vite prints, usually:
 ```text
 http://localhost:5173
 ```
+
+## Windows Desktop App
+
+AoE2 Coach can also run as a local Windows desktop app.
+
+For desktop development:
+
+```powershell
+npm run desktop:dev
+```
+
+To create a portable Windows build:
+
+```powershell
+npm run desktop:build
+```
+
+The compiled app is written to:
+
+```text
+release/
+```
+
+The `release/` folder is ignored by Git so compiled desktop builds do not get pushed to GitHub.
 
 ## macOS Setup
 

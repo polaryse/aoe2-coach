@@ -18,18 +18,20 @@ This roadmap tracks planned requirements and product direction for AoE2 Coach.
 
 ## v0.2 CaptureAge Replay Intelligence
 
-Goal: let users upload a local CaptureAge `.caderec` file or readable export and receive useful timeline-based coaching without requiring a backend.
+Goal: let users upload a local AoE2 `.aoe2record`, CaptureAge `.caderec`, or readable export and receive useful timeline-based coaching without requiring a backend.
 
 Requirements:
 
-- Add a CaptureAge upload flow to the Replay Review screen. *(implemented)*
-- Detect native `.caderec` files and parse them locally. *(experimental string/metadata scanner implemented)*
+- Add a replay upload flow to the Replay Review screen, with guidance for the usual AoE2 DE savegame path: `C:\Users\<you>\Games\Age of Empires 2 DE\<profile-id>\savegame`, plus the CaptureAge Vault path: `C:\Users\<you>\AppData\Roaming\CaptureAge\Vault`. *(implemented)*
+- Detect native `.aoe2record` and `.caderec` files and parse them locally. *(native `.aoe2record` operation-stream parsing implemented; `.caderec` remains experimental)*
+- Replace string scanning with a real `.aoe2record` operation-stream parser inspired by `mgz`. *(implemented for current DE recordings: compressed player header, sync time/resource snapshots, chat, research, build, queue, resign, and postgame boundaries; string scanning remains as fallback)*
 - Validate `.caderec` parsing against real CaptureAge sample files.
 - Implement deeper native `.caderec` timeline parsing or identify a reliable local parsing library/format bridge.
 - Keep uploaded files local to the browser.
 - Extract key timeline events where possible:
   - Dark Age idle TC or villager production gaps.
-  - Feudal Age transition timing.
+  - Idle TC by age, with grand total. *(estimated from villager queue coverage)*
+  - Feudal, Castle, and Imperial Age transition timing. *(implemented)*
   - House blocks.
   - Enemy opening/scouting signals.
   - Feudal pressure moments.
@@ -43,6 +45,13 @@ Requirements:
   - category: macro, micro, scouting, or decision-making,
   - next-game mission,
   - timeline event list.
+- Plot extracted replay signals on a timeline graph, highlighting age transitions and critical/warning events. *(implemented with native game-time timestamps)*
+- Build CaptureAge-style replay statistics panels:
+  - age timing comparison,
+  - TC queue gap estimates,
+  - villager queue rhythm,
+  - military/economy/society action counts,
+  - resource trend from sync packets where available.
 - Allow users to save extracted coaching as a Replay Review.
 - Gracefully handle unknown or unsupported file formats.
 - Avoid uploading replay data to any server.
